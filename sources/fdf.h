@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 08:55:34 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/08 16:49:55 by igchurru         ###   ########.fr       */
+/*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
+/*   Updated: 2024/10/08 16:48:22 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "../MLX42/include/MLX42/MLX42.h"
+#ifndef FDF_H
+# define FDF_H
 
-int	main(int argc, char **argv)
-{
-	(void) **argv;
-	if (argc != 2)
-		error_exit("Incorrect number of arguments: Must be exactly 2.\n");
-	fil_de_fer();
-	return (EXIT_SUCCESS);
-}
+# include "../libft/libft.h"
+# include "math.h"
+
+//	MAIN.C
+int		main(int argc, char **argv);
+
+//	ERROR.C
+void    error_exit(const char *error_message);
+
+//	FIL_DE_FER.C
+void	fil_de_fer();
+
+#endif
