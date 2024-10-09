@@ -6,7 +6,7 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2024/10/09 09:49:14 by igchurru         ###   ########.fr        #
+#    Updated: 2024/10/09 15:30:04 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLX42_FLAGS = -Iinclude -ldl -lglfw -pthread -lm
 
 # List of source files (without extensions).
-SOURCE_FILES = main fil_de_fer error
+SOURCE_FILES = main error fil_de_fer parse_map get_next_line
 
 # Directory containing the source files.
 SOURCES_DIR = sources/
