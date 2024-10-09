@@ -6,7 +6,7 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2024/10/08 16:23:52 by igchurru         ###   ########.fr        #
+#    Updated: 2024/10/09 09:49:14 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,8 +82,13 @@ $(NAME):$(OBJECTS)
 # "-c" compiles without linking, producing object files.
 $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
 	mkdir -p $(OBJECTS_DIR)
-	$(CC) $(CFLAGS) -o $@ -c $< 
+	$(CC) $(CFLAGS) -o $@ -c $<
 
+sanitize:
+	@echo "$(YELLOW)Adding Sanitize to CFLAGS$(RESET)"
+	$(eval CFLAGS=-fsanitize=address -g3)
+
+sani: sanitize all #this rule changes CFLAGS to include sanitize and then compiles the program as usual
 # Target for building the MLX42 library.
 # Run make in the MLX42 build directory.
 mlx42:
