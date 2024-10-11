@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 08:55:34 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/09 15:18:26 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/11 08:56:47 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 int	main(int argc, char **argv)
 {
-	(void) **argv;
-	if (argc != 2)
+	t_dot	**array;
+	
+		if (argc != 2)
 		error_exit("Incorrect number of arguments: Must be exactly 2.\n");
-	parse_map(argv[1]);
+	array = NULL;
+	parse_map(argv[1], array);
 	fil_de_fer();
 	return (EXIT_SUCCESS);
 }
