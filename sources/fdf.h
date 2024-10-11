@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/11 08:59:37 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:50:05 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # endif
 
 # include "../libft/libft.h"
+# include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
 
@@ -40,9 +41,7 @@ void	fil_de_fer();
 //void	draw_rect(mlx_image_t *img, uint32_t x, uint32_t y, int width, int height, uint32_t color);
 
 //  PARSE_MAP.C
-void	parse_map(char *argv1, t_dot **array);
-void	compose_matrix(int fd, t_dot **array);
-void	create_dot(t_dot **array, char *string, int x, int y);
+void	parse_map(char *argv1);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
