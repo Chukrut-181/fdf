@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:22:49 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/09 15:29:30 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/14 11:22:33 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_trim_storage(char *storage)
 		free (storage);
 		return (NULL);
 	}
-	new_storage = ft_calloc((ft_strlen(storage) - i + 1), sizeof(char));
+	new_storage = ft_gnl_calloc((ft_gnl_strlen(storage) - i + 1), sizeof(char));
 	if (!new_storage)
 		return (NULL);
 	i = i + 1;
@@ -49,7 +49,7 @@ char	*ft_send_to_print(char *storage)
 		return (NULL);
 	while (storage[i] && storage[i] != '\n')
 		i++;
-	to_print = ft_calloc((i + 2), sizeof(char));
+	to_print = ft_gnl_calloc((i + 2), sizeof(char));
 	if (!to_print)
 		return (NULL);
 	i = 0;
@@ -77,13 +77,13 @@ char	*get_next_line(int fd)
 	if (BUFFER_SIZE < 1 || fd < 0)
 		return (NULL);
 	bytes_read = 1;
-	while (0 < bytes_read && !ft_strchr(storage, '\n'))
+	while (0 < bytes_read && !ft_gnl_strchr(storage, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (NULL);
 		buffer[bytes_read] = '\0';
-		storage = ft_strjoin(storage, buffer);
+		storage = ft_gnl_strjoin(storage, buffer);
 	}
 	if (bytes_read == -1)
 		free(storage);
