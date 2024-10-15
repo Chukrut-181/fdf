@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:08 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/11 12:57:44 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/15 12:40:34 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	fil_de_fer()
 
 	mlx = mlx_init(1600, 1200, "test window", true);
 	img = mlx_new_image(mlx, 1600, 1200);
-	draw_rect(img, 0, 0, 800, 600, 0xFF0000FF);
-	mlx_put_pixel(img, 10, 10, 0xFFFFFFFF);
-	mlx_image_to_window(mlx, img, 0, 0);
+	//draw_rect(img, 0, 0, 800, 600, 0xFF000000);
+	//mlx_put_pixel(img, 10, 10, 0xFFFFFFFF);
+	//mlx_image_to_window(mlx, img, 0, 0);
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, img);
 	mlx_terminate(mlx);

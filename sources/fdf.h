@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/14 11:12:37 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:48:20 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@
 //  DOT STRUCTURE
 typedef struct s_dot
 {
-	int Xcoord;
-	int Ycoord;
-    int Zcoord;
+	int 	X;
+	int 	Y;
+    char	*Zcoord;
+	int		Z;
+	struct s_dot	*next_col;
+	struct s_dot	*next_row;
 }	t_dot;
 
 //	MAIN.C
@@ -41,7 +44,9 @@ void	fil_de_fer();
 //void	draw_rect(mlx_image_t *img, uint32_t x, uint32_t y, int width, int height, uint32_t color);
 
 //  PARSE_MAP.C
-void	parse_map(char *argv1);
+void	parse_map(char *argv1, t_dot **matrix);
+void	build_matrix(int fd, t_dot **matrix);
+void	populate_matrix(t_dot **matrix, char *line);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
