@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 12:28:45 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:24:57 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@
 # include <math.h>
 #include "../MLX42/include/MLX42/MLX42.h"
 
-//  DOT STRUCTURE
+//  DOT STRUCTURE to store all dot coordinates
 typedef struct s_dot
 {
 	int				x;
 	int				y;
 	int				z;
-	struct s_dot	*next_col;
-	struct s_dot	*next_row;
+	struct s_map	*map;
 }	t_dot;
+
+//	MAP STRCTURE to store map general data
+typedef struct s_map
+{
+	int				map_rows;
+	int				map_cols;
+}	t_map;
 
 //	MAIN.C
 int		main(int argc, char **argv);
@@ -43,9 +49,9 @@ void	error_exit(const char *error_message);
 void	fil_de_fer(t_dot **matrix);
 
 //  PARSE_MAP.C
-t_dot	**parse_map(char *argv1);
-t_dot	**build_matrix(int n_of_rows, int n_of_cols);
-void	populate_matrix(t_dot **matrix, char *route_to_map, int rows, int cols);
+t_dot	**parse_map(char *argv1, t_map *map);
+t_dot	**build_matrix(t_map *map);
+void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
 
 //	RENDERIZE.C
 void	render_matrix(mlx_image_t *img, t_dot **matrix, int n_of_rows, int n_of_cols);

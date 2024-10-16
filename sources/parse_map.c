@@ -6,14 +6,14 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:32:54 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 12:05:56 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:26:31 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-void	populate_matrix(t_dot **matrix, char *route_to_map, int rows, int cols)
+void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map)
 {
 	int		fd;
 	char	*line;
@@ -23,18 +23,16 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, int rows, int cols)
 
 	fd = open(route_to_map, O_RDONLY);
 	i = 0;
-	while (i < rows)
+	while (i < map->map_rows)
 	{
 		line = get_next_line(fd);
 		split_line = ft_split(line, ' ');
 		j = 0;
-		while (j < cols)
+		while (j < map->map_cols)
 		{
 			matrix[i][j].x = j;
-			write(1, "coucou\n", 7);
 			matrix[i][j].y = i;
 			matrix[i][j].z = ft_atoi(split_line[j]);
-			printf("X = %i, Y = %i, Z = %i\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z);
 			j++;
 		}
 		free(line);
@@ -43,18 +41,18 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, int rows, int cols)
 	close(fd);
 }
 
-t_dot	**build_matrix(int n_of_rows, int n_of_cols)
+t_dot	**build_matrix(t_map *map)
 {
 	t_dot	**matrix;
 	int		i;
 
 	i = 0;
-	matrix = (t_dot **)malloc(n_of_rows * sizeof(t_dot *));
+	matrix = (t_dot **)malloc(map->map_rows * sizeof(t_dot *));
 	if (matrix == NULL)
 		return (NULL);
-	while (i < n_of_rows)
+	while (i < map->map_rows)
 	{
-		matrix[i] = (t_dot *)malloc(n_of_cols * sizeof(t_dot));
+		matrix[i] = (t_dot *)malloc(map->map_cols * sizeof(t_dot));
 		if (!matrix[i])
 		{
 			while (0 < i)
@@ -70,7 +68,7 @@ t_dot	**build_matrix(int n_of_rows, int n_of_cols)
 	return (matrix);
 }
 
-void	measure_map(int fd, int	*n_of_rows, int *n_of_cols)
+void	measure_map(int fd, t_map *map)
 {
 	int		i;
 	int		j;
@@ -93,17 +91,15 @@ void	measure_map(int fd, int	*n_of_rows, int *n_of_cols)
 		free(line);
 		i++;
 	}
-	*n_of_rows = i;
-	*n_of_cols = j;
+	map->map_rows = i;
+	map->map_cols = j;
 	close(fd);
 }
 
-t_dot	**parse_map(char *argv1)
+t_dot	**parse_map(char *argv1, t_map *map)
 {
 	int		fd;
 	char	*route_to_map;
-	int		n_of_rows;
-	int		n_of_cols;
 	t_dot	**matrix;
 
 	route_to_map = ft_strjoin("./maps/", argv1);
@@ -113,11 +109,10 @@ t_dot	**parse_map(char *argv1)
 		free(route_to_map);
 		error_exit("Cannot open map.\n");
 	}
-	measure_map(fd, &n_of_rows, &n_of_cols);
-	printf("%i, %i\n", n_of_rows, n_of_cols);
-	matrix = build_matrix(n_of_rows, n_of_cols);
+	measure_map(fd, map);
+	matrix = build_matrix(map);
 	close(fd);
-	populate_matrix(matrix, route_to_map, n_of_rows, n_of_cols);
+	populate_matrix(matrix, route_to_map, map);
 	free(route_to_map);
 	return (matrix);
 }
