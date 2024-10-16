@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fil_de_fer.c                                       :+:      :+:    :+:   */
+/*   renderize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 16:22:08 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 12:24:35 by igchurru         ###   ########.fr       */
+/*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
+/*   Updated: 2024/10/16 12:37:30 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-void	fil_de_fer(t_dot **matrix)
+void	render_matrix(mlx_image_t *img, t_dot **matrix, int n_of_rows, int n_of_cols)
 {
-	mlx_t			*mlx;
-	mlx_image_t		*img;
+	int			i;
+	int			j;
+	uint32_t	x2d;
+	uint32_t	y2d;
 
-	mlx = mlx_init(1600, 1200, "test window", true);
-	img = mlx_new_image(mlx, 1600, 1200);
-	render_matrix(img, matrix, 9, 11);
-	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_loop(mlx);
-	mlx_delete_image(mlx, img);
-	mlx_terminate(mlx);
+	i = 0;
+	while (i < n_of_rows)
+	{
+		j = 0;
+		while (j < n_of_cols)
+		{
+			x2d = (uint32_t)matrix[i][j].x * 20 + 20;
+			y2d = (uint32_t)matrix[i][j].y * 20 + 20;
+			mlx_put_pixel(img, x2d, y2d, 0xFFFFFFFF);
+			j++;
+		}
+		i++;
+	}
 }
