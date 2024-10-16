@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 13:49:13 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:59:31 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@
 void	calculate_scale_and_offset(t_map *map, int window_width, int window_height)
 {
 
-    int scale_x = window_width / (map->map_cols + 1);
-    int scale_y = window_height / (map->map_rows + 1);
-    
+	int scale_x;
+	int scale_y;
+
+	scale_x = window_width / (map->map_cols + 1);
+	scale_y = window_height / (map->map_rows + 1);
+
 	if (scale_x < scale_y)
 		map->scale = scale_x;
 	else
 		map->scale = scale_y;
 	map->offset_x = (window_width - (map->map_cols * map->scale)) / 2;
-    map->offset_y = (window_height - (map->map_rows * map->scale)) / 2;
+	map->offset_y = (window_height - (map->map_rows * map->scale)) / 2;
 }
 
 void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
@@ -48,3 +51,4 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 		i++;
 	}
 }
+
