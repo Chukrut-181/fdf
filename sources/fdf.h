@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 15:59:44 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:42:00 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-#include "../MLX42/include/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 //  DOT STRUCTURE to store all dot coordinates
 typedef struct s_dot
@@ -58,7 +58,7 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
 
 //	RENDERIZE.C
 void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
-void	calculate_scale_and_offset(t_map *map, int window_width, int window_height);
+void	scale_and_offset(t_map *map, int window_width, int window_height);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
