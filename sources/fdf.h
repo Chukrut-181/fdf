@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 13:24:57 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:49:46 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_map
 {
 	int				map_rows;
 	int				map_cols;
+	int				scale;
+	int				offset_x;
+	int				offset_y;
 }	t_map;
 
 //	MAIN.C
@@ -46,7 +49,7 @@ int		main(int argc, char **argv);
 void	error_exit(const char *error_message);
 
 //	FIL_DE_FER.C
-void	fil_de_fer(t_dot **matrix);
+void	fil_de_fer(t_dot **matrix, t_map *map);
 
 //  PARSE_MAP.C
 t_dot	**parse_map(char *argv1, t_map *map);
@@ -54,7 +57,8 @@ t_dot	**build_matrix(t_map *map);
 void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
 
 //	RENDERIZE.C
-void	render_matrix(mlx_image_t *img, t_dot **matrix, int n_of_rows, int n_of_cols);
+void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
+void	calculate_scale_and_offset(t_map *map, int window_width, int window_height);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);

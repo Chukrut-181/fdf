@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 08:55:34 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 13:17:56 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:30:43 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error_exit("Incorrect number of arguments: Must be exactly 2.\n");
 	matrix = parse_map(argv[1], &map);
-	fil_de_fer(matrix);
+	fil_de_fer(matrix, &map);
 	return (EXIT_SUCCESS);
 }
