@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 10:12:32 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:44:25 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ typedef struct s_map
 {
 	int				map_rows;
 	int				map_cols;
+	double			min_x;
+	double			max_x;
+	double			min_y;
+	double			max_y;
 	int				scale;
 	int				offset_x;
 	int				offset_y;
@@ -62,7 +66,9 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
 
 //	RENDERIZE.C
 void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
-void	scale_and_offset(t_map *map, int window_width, int window_height);
+void	scale_and_offset(t_dot **matrix, t_map *map, int window_width, int window_height);
+void	preprocess_matrix(t_dot **matrix, t_map *map);
+void	calculate_iso_coords(t_dot *dot);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
