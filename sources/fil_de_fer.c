@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:08 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 12:17:06 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:28:12 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	fil_de_fer(t_dot **matrix, t_map *map)
 	preprocess_matrix(matrix, map);
 	scale_and_offset(matrix, map, 1600, 1200);
 	render_matrix(img, matrix, map);
+	//DRAW LINES if (j < map->map_cols - 1) // Draw line to the right dot
+	//DRAW LINES if (j < map->map_rows - 1) // Draw line to the bottom dot
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_loop(mlx);
 	free_matrix(matrix, map->map_rows);
