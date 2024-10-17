@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 10:58:18 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:54:27 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int		main(int argc, char **argv);
 
 //	ERROR.C
 void	error_exit(const char *error_message);
+void	free_array(char **array);
+void	free_matrix(t_dot **matrix, int i);
 
 //	FIL_DE_FER.C
 void	fil_de_fer(t_dot **matrix, t_map *map);

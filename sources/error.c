@@ -6,12 +6,35 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:39 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 10:36:51 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:55:20 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "../MLX42/include/MLX42/MLX42.h"
+
+void	free_matrix(t_dot **matrix, int i)
+{
+	while (i > 0)
+	{
+		i--;
+		free(matrix[i]);
+	}
+	free(matrix);
+}
+
+void	free_array(char **array)
+{
+	char	**aux;
+
+	aux = array;
+	while (*aux)
+	{
+		free(*aux);
+		aux++;
+	}
+	free(array);
+}
 
 void	error_exit(const char *error_message)
 {

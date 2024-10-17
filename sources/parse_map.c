@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:32:54 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 10:58:41 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:54:14 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map)
 			j++;
 		}
 		free(line);
+		free_array(split_line);
 		i++;
 	}
 	close(fd);
@@ -55,13 +56,8 @@ t_dot	**build_matrix(t_map *map)
 		matrix[i] = (t_dot *)malloc(map->map_cols * sizeof(t_dot));
 		if (!matrix[i])
 		{
-			while (0 < i)
-			{
-				free(matrix[i]);
-				i--;
-			}
-			free(matrix);
-			return (NULL);
+			free_matrix(matrix, i);
+			error_exit("Error while building matrix\n");
 		}
 		i++;
 	}
@@ -87,6 +83,7 @@ void	measure_map(int fd, t_map *map)
 			split_line = ft_split(line, ' ');
 			while (split_line[j])
 				j++;
+			free_array(split_line);
 		}
 		free(line);
 		i++;
