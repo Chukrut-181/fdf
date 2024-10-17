@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:32:54 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 10:42:00 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:58:41 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ t_dot	**parse_map(char *argv1, t_map *map)
 		error_exit("Cannot open map.\n");
 	}
 	measure_map(fd, map);
-	//scale_and_offset(map, 1600, 1200);
 	matrix = build_matrix(map);
 	close(fd);
 	populate_matrix(matrix, route_to_map, map);
