@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/14 11:12:37 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:54:27 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,60 @@
 #  define BUFFER_SIZE 1024
 # endif
 
+# define ISO_ANGLE 0.523599
+
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include "../MLX42/include/MLX42/MLX42.h"
 
-//  DOT STRUCTURE
+//  DOT STRUCTURE to store all dot coordinates
 typedef struct s_dot
 {
-	int Xcoord;
-	int Ycoord;
-    int Zcoord;
+	int				x;
+	int				y;
+	int				z;
+	double			iso_x;
+	double			iso_y;
+	struct s_map	*map;
 }	t_dot;
+
+//	MAP STRCTURE to store map general data
+typedef struct s_map
+{
+	int				map_rows;
+	int				map_cols;
+	double			min_x;
+	double			max_x;
+	double			min_y;
+	double			max_y;
+	int				scale;
+	int				offset_x;
+	int				offset_y;
+}	t_map;
 
 //	MAIN.C
 int		main(int argc, char **argv);
 
 //	ERROR.C
-void    error_exit(const char *error_message);
+void	error_exit(const char *error_message);
+void	free_array(char **array);
+void	free_matrix(t_dot **matrix, int i);
 
 //	FIL_DE_FER.C
-void	fil_de_fer();
-//void	draw_rect(mlx_image_t *img, uint32_t x, uint32_t y, int width, int height, uint32_t color);
+void	fil_de_fer(t_dot **matrix, t_map *map);
 
 //  PARSE_MAP.C
-void	parse_map(char *argv1);
+t_dot	**parse_map(char *argv1, t_map *map);
+t_dot	**build_matrix(t_map *map);
+void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
+
+//	RENDERIZE.C
+void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
+void	scale_and_offset(t_dot **matrix, t_map *map, int w_width, int w_height);
+void	preprocess_matrix(t_dot **matrix, t_map *map);
+void	calculate_iso_coords(t_dot *dot);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);

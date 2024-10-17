@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:37:10 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/14 11:15:58 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:30:04 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	*ft_gnl_strjoin(char *storage, char *buffer)
 		storage = ft_gnl_calloc(1, sizeof(char));
 	if (!storage)
 		return (NULL);
-	s3 = ft_gnl_calloc((ft_gnl_strlen(storage) + ft_gnl_strlen(buffer) + 1), sizeof(char));
+	s3 = ft_gnl_calloc((ft_gnl_strlen(storage) + ft_gnl_strlen(buffer) + 1),
+			sizeof(char));
 	if (!s3)
 		return (NULL);
 	i = 0;
