@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/16 16:42:00 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:12:32 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
+
+# define ISO_ANGLE 0.523599
 
 # include "../libft/libft.h"
 # include <fcntl.h>
@@ -29,6 +31,8 @@ typedef struct s_dot
 	int				x;
 	int				y;
 	int				z;
+	double			iso_x;
+	double			iso_y;
 	struct s_map	*map;
 }	t_dot;
 
