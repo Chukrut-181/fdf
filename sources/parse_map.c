@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:32:54 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 11:54:14 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:46:21 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_dot	**build_matrix(t_map *map)
 			free_matrix(matrix, i);
 			error_exit("Error while building matrix\n");
 		}
+		ft_bzero(matrix[i], (map->map_cols * sizeof(t_dot)));
 		i++;
 	}
 	return (matrix);
