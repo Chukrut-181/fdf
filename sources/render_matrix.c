@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 10:17:26 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:32:13 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,17 @@ void	preprocess_matrix(t_dot **matrix, t_map *map)
 		while (j < map->map_cols)
 		{
 			calculate_iso_coords(&matrix[i][j]);
+			j++;
+		}
+		i++;
+	}
+	scale_and_offset(matrix, map, 1600, 1200);
+	i = 0;
+	while (i < map->map_rows)
+	{
+		j = 0;
+		while (j < map->map_cols)
+		{
 			scale_iso_coords(&matrix[i][j], map);
 			j++;
 		}
