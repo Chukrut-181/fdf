@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderize.c                                        :+:      :+:    :+:   */
+/*   render_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 11:02:49 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:05:50 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "../MLX42/include/MLX42/MLX42.h"
+
+void	scale_iso_coords(t_dot *dot, t_map *map)
+{
+	dot->scaled_iso_x = dot->iso_x * map->scale + map->offset_x;
+	dot->scaled_iso_y = dot->iso_y * map->scale + map->offset_y;
+}
 
 void	calculate_iso_coords(t_dot *dot)
 {
@@ -80,6 +86,7 @@ void	preprocess_matrix(t_dot **matrix, t_map *map)
 		while (j < map->map_cols)
 		{
 			calculate_iso_coords(&matrix[i][j]);
+			scale_iso_coords(&matrix[i][j], map);
 			j++;
 		}
 		i++;

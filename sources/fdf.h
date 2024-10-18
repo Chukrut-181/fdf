@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 13:48:29 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 09:44:27 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ typedef struct s_dot
 	int				z;
 	double			iso_x;
 	double			iso_y;
-	double			right_iso_x;
-	double			right_iso_y;
-	double			bottom_iso_x;
-	double			bottom_iso_y;
+	double			scaled_iso_x;
+	double			scaled_iso_y;
+	double			right_scaled_iso_x;
+	double			right_scaled_iso_y;
+	double			bottom_scaled_iso_x;
+	double			bottom_scaled_iso_y;
 	struct s_map	*map;
 }	t_dot;
 
