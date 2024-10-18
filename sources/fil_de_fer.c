@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:08 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 10:30:54 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:51:27 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	fil_de_fer(t_dot **matrix, t_map *map)
 	img = mlx_new_image(mlx, 1600, 1200);
 	preprocess_matrix(matrix, map);
 	render_matrix(img, matrix, map);
-	//render_lines(img, matrix, map);
+	render_lines(img, matrix, map);
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_loop(mlx);
 	free_matrix(matrix, map->map_rows);

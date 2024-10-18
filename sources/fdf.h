@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 10:44:53 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:57:02 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_dot
 	struct s_map	*map;
 }	t_dot;
 
-//	MAP STRCTURE to store map general data
+//	MAP STRUCTURE to store map general data
 typedef struct s_map
 {
 	int				map_rows;
@@ -86,6 +86,7 @@ void	calculate_iso_coords(t_dot *dot);
 
 //	RENDER_LINES.C
 void	render_lines(mlx_image_t *img, t_dot **matrix, t_map *map);
+void	draw_line(mlx_image_t *img, t_dot origin, t_dot target, uint32_t color);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);

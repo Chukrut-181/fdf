@@ -6,58 +6,67 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:29:32 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/17 13:58:17 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:05:57 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-void	draw_line(mlx_image_t *img, t_dot origin, t_dot target, uint32_t color)
+void	determine_step_direction(int *step, int a, int b)
 {
-	int x0 = (int)((origin.iso_x * origin.map->scale) + origin.map->offset_x);
-	int y0 = (int)((origin.iso_y * origin.map->scale) + origin.map->offset_y);
-	int x1 = (int)((target.iso_x * target.map->scale) + target.map->offset_x);
-	int y1 = (int)((target.iso_y * target.map->scale) + target.map->offset_y);
-
-	int dx = x1 - x0;
-	int dy = y1 - y0;
-	int sx = (dx >= 0) ? 1 : -1;
-	int sy = (dy >= 0) ? 1 : -1;
-	dx = abs(dx);
-	dy = abs(dy);
-
-	if (dx > dy)
+	if (a < b)
 	{
-		int err = dx / 2;
-		while (x0 != x1)
-		{
-			mlx_put_pixel(img, x0, y0, color);
-			err -= dy;
-			if (err < 0)
-			{
-				y0 += sy;
-				err += dx;
-			}
-			x0 += sx;
-		}
+		*step = 1;
 	}
 	else
+		*step = -1;
+}
+
+void	extract_coordinates(int *x, int *y, t_dot dot)
+{
+	*x = (int)dot.scaled_iso_x;
+	*y = (int)dot.scaled_iso_y;
+}
+
+void	draw_line(mlx_image_t *img, t_dot origin, t_dot target, uint32_t color)
+{
+	int x0;
+	int y0;
+	int x1;
+	int y1;
+	int delta_x;
+	int delta_y;
+	int step_x;
+	int step_y;
+	int error;
+	extract_coordinates(&x0, &y0, origin);
+	extract_coordinates(&x1, &y1, target);
+	delta_x = abs(x1 - x0);
+	delta_y = abs(y1 - y0);
+	determine_step_direction(&step_x, x0, x1);
+	determine_step_direction(&step_y, y0, y1);
+	error = delta_x - delta_y;
+
+	while (true)
 	{
-		int err = dy / 2;
-		while (y0 != y1)
+		mlx_put_pixel(img, x0, y0, color); // Plot the pixel at (x0, y0)
+
+		if (x0 == x1 || y0 == y1)
 		{
-			mlx_put_pixel(img, x0, y0, color);
-			err -= dx;
-			if (err < 0)
-			{
-				x0 += sx;
-				err += dy;
-			}
-			y0 += sy;
+			break; // Exit if we've reached the target point
+		}
+		if ((error * 2) > -delta_y) // Check if we need to move in the x direction
+		{
+			error -= delta_y; // Update the error
+			x0 += step_x; // Move in the x direction
+		}
+		if ((error * 2) < delta_x) // Check if we need to move in the y direction
+		{
+			error += delta_x; // Update the error
+			y0 += step_y; // Move in the y direction
 		}
 	}
-	mlx_put_pixel(img, x0, y0, color);  // Ensure the last point is drawn
 }
 
 void	render_lines(mlx_image_t *img, t_dot **matrix, t_map *map)
