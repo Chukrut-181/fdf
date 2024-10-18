@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 10:57:02 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:10:28 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,19 @@ typedef struct s_map
 	int				offset_x;
 	int				offset_y;
 }	t_map;
+
+typedef struct s_line
+{
+	int				x0;
+	int 			y0;
+	int 			x1;
+	int 			y1;
+	int 			delta_x;
+	int 			delta_y;
+	int 			step_x;
+	int 			step_y;
+	int 			error;
+}	t_line;
 
 //	MAIN.C
 int		main(int argc, char **argv);
