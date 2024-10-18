@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 09:44:27 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:44:53 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ void	fil_de_fer(t_dot **matrix, t_map *map);
 t_dot	**parse_map(char *argv1, t_map *map);
 t_dot	**build_matrix(t_map *map);
 void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
+
+//	PREPROCESS_MATRIX.C
+void	preprocess_matrix(t_dot **matrix, t_map *map);
+void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map);
+void	scale_iso_coords(t_dot *dot, t_map *map);
+void	calculate_iso_coords(t_dot *dot);
 
 //	RENDER_MATRIX.C
 void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
