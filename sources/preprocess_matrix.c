@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:39:12 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 10:41:31 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:57:33 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map)
 			}
 			if (i < map->map_rows - 1)
 			{
-				matrix[i][j].bottom_scaled_iso_x = matrix[i + 1][j].scaled_iso_x;
-				matrix[i][j].bottom_scaled_iso_y = matrix[i + 1][j].scaled_iso_y;
+				matrix[i][j].bottom_scaled_iso_x
+					= matrix[i + 1][j].scaled_iso_x;
+				matrix[i][j].bottom_scaled_iso_y
+					= matrix[i + 1][j].scaled_iso_y;
 			}
 			j++;
 		}

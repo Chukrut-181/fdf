@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 10:57:02 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:59:20 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,20 @@ typedef struct s_map
 	int				offset_y;
 }	t_map;
 
+// LINE STRUCTURE to implement Bresenham's algorythm
+typedef struct s_bresenham
+{
+	int				x0;
+	int				y0;
+	int				x1;
+	int				y1;
+	int				delta_x;
+	int				delta_y;
+	int				step_x;
+	int				step_y;
+	int				error;
+}	t_bresenham;
+
 //	MAIN.C
 int		main(int argc, char **argv);
 
@@ -87,6 +101,12 @@ void	calculate_iso_coords(t_dot *dot);
 //	RENDER_LINES.C
 void	render_lines(mlx_image_t *img, t_dot **matrix, t_map *map);
 void	draw_line(mlx_image_t *img, t_dot origin, t_dot target, uint32_t color);
+
+//	BRESENHAM.C
+void	init_bresenham(t_bresenham *b, t_dot origin, t_dot target);
+void	determine_step_direction(int *step, int a, int b);
+void	extract_coordinates(int *x, int *y, t_dot dot);
+void	draw_step(t_bresenham *b);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
