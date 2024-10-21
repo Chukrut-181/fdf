@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 16:33:26 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:38:17 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	free_matrix(t_dot **matrix, int i);
 
 //	FIL_DE_FER.C
 void	fil_de_fer(t_dot **matrix, t_map *map);
-void	mlx_key_hook(mlx_t* mlx, mlx_keyfunc func, void* param);
+void	mlx_key_hook(mlx_t *mlx, mlx_keyfunc func, void *param);
 
 //  PARSE_MAP.C
 t_dot	**parse_map(char *argv1, t_map *map);

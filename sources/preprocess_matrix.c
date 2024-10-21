@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:39:12 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 15:36:58 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:37:41 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,7 @@ void	preprocess_matrix(t_dot **matrix, t_map *map)
 		}
 		i++;
 	}
-	//set_neighbors_scaled_coords(matrix, map);
 }
-
-/* void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < map->map_rows)
-	{
-		j = 0;
-		while (j < map->map_cols)
-		{
-			if (j < map->map_cols - 1)
-			{
-				matrix[i][j].right_scaled_iso_x = matrix[i][j + 1].scaled_iso_x;
-				matrix[i][j].right_scaled_iso_y = matrix[i][j + 1].scaled_iso_y;
-			}
-			if (i < map->map_rows - 1)
-			{
-				matrix[i][j].bottom_scaled_iso_x
-					= matrix[i + 1][j].scaled_iso_x;
-				matrix[i][j].bottom_scaled_iso_y
-					= matrix[i + 1][j].scaled_iso_y;
-			}
-			j++;
-		}
-		i++;
-	}
-} */
 
 void	scale_iso_coords(t_dot *dot, t_map *map)
 {
