@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 10:23:25 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:18:45 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # endif
 
 # define ISO_ANGLE 0.523599
+# define ROTATE_ANGLE 0.017453293
 
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
 # include "../MLX42/include/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42_Int.h"
 
 //  DOT STRUCTURE to store all dot coordinates
 typedef struct s_dot
@@ -54,6 +56,9 @@ typedef struct s_map
 	int				scale;
 	int				offset_x;
 	int				offset_y;
+	t_dot			**matrix;
+	mlx_image_t		*img;
+	mlx_t			*mlx;
 }	t_map;
 
 // LINE STRUCTURE to implement Bresenham's algorythm
@@ -80,6 +85,7 @@ void	free_matrix(t_dot **matrix, int i);
 
 //	FIL_DE_FER.C
 void	fil_de_fer(t_dot **matrix, t_map *map);
+void	mlx_key_hook(mlx_t* mlx, mlx_keyfunc func, void* param);
 
 //  PARSE_MAP.C
 t_dot	**parse_map(char *argv1, t_map *map);
@@ -107,6 +113,10 @@ void	init_bresenham(t_bresenham *b, t_dot origin, t_dot target);
 void	determine_step_direction(int *step, int a, int b);
 void	extract_coordinates(int *x, int *y, t_dot dot);
 void	draw_step(t_bresenham *b);
+
+//	MAP_ROTATION.C
+void handle_key(mlx_key_data_t keydata, void *param);
+void rotate_matrix(t_map *map, double angle);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
