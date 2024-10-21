@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:39:12 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 09:57:33 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:36:58 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	preprocess_matrix(t_dot **matrix, t_map *map)
 		}
 		i++;
 	}
-	set_neighbors_scaled_coords(matrix, map);
+	//set_neighbors_scaled_coords(matrix, map);
 }
 
-void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map)
+/* void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map)
 {
 	int	i;
 	int	j;
@@ -69,7 +69,7 @@ void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map)
 		}
 		i++;
 	}
-}
+} */
 
 void	scale_iso_coords(t_dot *dot, t_map *map)
 {

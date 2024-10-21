@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 13:18:45 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:33:26 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ typedef struct s_dot
 	double			iso_y;
 	double			scaled_iso_x;
 	double			scaled_iso_y;
-	double			right_scaled_iso_x;
+	/* double			right_scaled_iso_x;
 	double			right_scaled_iso_y;
 	double			bottom_scaled_iso_x;
-	double			bottom_scaled_iso_y;
+	double			bottom_scaled_iso_y; */
 	struct s_map	*map;
 }	t_dot;
 
@@ -56,6 +56,7 @@ typedef struct s_map
 	int				scale;
 	int				offset_x;
 	int				offset_y;
+	double			current_angle;
 	t_dot			**matrix;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
@@ -94,7 +95,7 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
 
 //	PREPROCESS_MATRIX.C
 void	preprocess_matrix(t_dot **matrix, t_map *map);
-void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map);
+//void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map);
 void	scale_iso_coords(t_dot *dot, t_map *map);
 void	calculate_iso_coords(t_dot *dot);
 
@@ -114,9 +115,8 @@ void	determine_step_direction(int *step, int a, int b);
 void	extract_coordinates(int *x, int *y, t_dot dot);
 void	draw_step(t_bresenham *b);
 
-//	MAP_ROTATION.C
-void handle_key(mlx_key_data_t keydata, void *param);
-void rotate_matrix(t_map *map, double angle);
+//	MLX_KEY_HOOK.C
+void	handle_key(mlx_key_data_t keydata, void *param);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);

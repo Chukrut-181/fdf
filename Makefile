@@ -6,7 +6,7 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2024/10/21 13:46:26 by igchurru         ###   ########.fr        #
+#    Updated: 2024/10/21 15:07:35 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ MLX42_FLAGS = -Iinclude -ldl -lglfw -pthread -lm
 # List of source files (without extensions).
 SOURCE_FILES = main error fil_de_fer parse_map preprocess_matrix\
 render_matrix render_lines bresenham get_next_line get_next_line_utils\
+mlx_key_hook
 
 # Directory containing the source files.
 SOURCES_DIR = sources/

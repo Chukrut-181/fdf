@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/18 10:45:29 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:25:26 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 		j = 0;
 		while (j < map->map_cols)
 		{
-			x2d = matrix[i][j].iso_x * map->scale + map->offset_x;
-			y2d = matrix[i][j].iso_y * map->scale + map->offset_y;
+			x2d = matrix[i][j].scaled_iso_x;
+			y2d = matrix[i][j].scaled_iso_y;
 			mlx_put_pixel(img, x2d, y2d, 0xFFFFFFFF);
 			j++;
 		}
