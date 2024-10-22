@@ -6,12 +6,22 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 16:25:26 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:29:36 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "../MLX42/include/MLX42/MLX42.h"
+
+int	is_out_of_bounds(t_dot *dot)
+{
+	if (dot->scaled_iso_x < 0 || dot->scaled_iso_x >= 1600 ||
+		dot->scaled_iso_y < 0 || dot->scaled_iso_y >= 1200)
+	{
+		return (1);
+	}
+	return (0);
+}
 
 void	calculate_iso_bounds(t_dot **matrix, t_map *map)
 {
@@ -66,8 +76,8 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 {
 	int			i;
 	int			j;
-	uint32_t	x2d;
-	uint32_t	y2d;
+	double	x2d;
+	double	y2d;
 
 	i = 0;
 	while (i < map->map_rows)
@@ -77,7 +87,10 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 		{
 			x2d = matrix[i][j].scaled_iso_x;
 			y2d = matrix[i][j].scaled_iso_y;
-			mlx_put_pixel(img, x2d, y2d, 0xFFFFFFFF);
+			if (!is_out_of_bounds(&matrix[i][j]))
+			{
+				mlx_put_pixel(img, (uint32_t)x2d, (uint32_t)y2d, 0xFFFFFFFF);
+			}
 			j++;
 		}
 		i++;

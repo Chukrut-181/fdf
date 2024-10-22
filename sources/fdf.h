@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/22 14:53:40 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:32:45 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
 void	scale_and_offset(t_dot **matrix, t_map *map, int w_width, int w_height);
 void	preprocess_matrix(t_dot **matrix, t_map *map);
 void	calculate_iso_coords(t_dot *dot);
+int		is_out_of_bounds(t_dot *dot);
 
 //	RENDER_LINES.C
 void	render_lines(mlx_image_t *img, t_dot **matrix, t_map *map);

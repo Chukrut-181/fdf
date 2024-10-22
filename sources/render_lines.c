@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:29:32 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 10:14:24 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:33:51 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,17 @@ void	render_lines(mlx_image_t *img, t_dot **matrix, t_map *map)
 		{
 			if (j < map->map_cols - 1)
 			{
-				draw_line(img, matrix[i][j], matrix[i][j + 1], 0xFFFFFFFF);
+				if (!is_out_of_bounds(&matrix[i][j]) && !is_out_of_bounds(&matrix[i][j + 1]))
+				{
+					draw_line(img, matrix[i][j], matrix[i][j + 1], 0xFFFFFFFF);
+				}
 			}
 			if (i < map->map_rows - 1)
 			{
-				draw_line(img, matrix[i][j], matrix[i + 1][j], 0xFFFFFFFF);
+				if (!is_out_of_bounds(&matrix[i][j]) && !is_out_of_bounds(&matrix[i + 1][j]))
+				{
+					draw_line(img, matrix[i][j], matrix[i + 1][j], 0xFFFFFFFF);
+				}
 			}
 			j++;
 		}
