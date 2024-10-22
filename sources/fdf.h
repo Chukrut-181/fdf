@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/22 15:32:45 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:44:21 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void	handle_key(mlx_key_data_t keydata, void *param);
 void	manage_rotation(t_map *map, double angle);
 void	rotate_matrix(t_map *map, double angle);
 void	rotate_dot(t_dot *dot, double angle, double center_x, double center_y);
+void	calculate_map_center(t_map *map);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
