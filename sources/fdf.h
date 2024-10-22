@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/22 15:44:21 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:26:10 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,10 @@ void	draw_step(t_bresenham *b);
 
 //	MLX_KEY_HOOK.C
 void	handle_key(mlx_key_data_t keydata, void *param);
+
+//	MLX_SCROLL.HOOK.C
+void	scroll_zoom(double xdelta, double ydelta, void *param);
+void	zoom_matrix(t_map *map, double zoom_factor);
 
 //	ROTATE_MATRIX.C
 void	manage_rotation(t_map *map, double angle);
