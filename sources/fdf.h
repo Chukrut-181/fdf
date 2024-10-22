@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 16:38:17 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:53:40 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # define ISO_ANGLE 0.523599
-# define ROTATE_ANGLE 0.017453293
+# define ROTATE_ANGLE 0.087266463
 
 # include "../libft/libft.h"
 # include <fcntl.h>
@@ -27,7 +27,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../MLX42/include/MLX42/MLX42_Int.h"
 
-//  DOT STRUCTURE to store all dot coordinates
+//  DOT STRUCTURE to store all dot coordinates, raw and processed.
 typedef struct s_dot
 {
 	int				x;
@@ -37,14 +37,11 @@ typedef struct s_dot
 	double			iso_y;
 	double			scaled_iso_x;
 	double			scaled_iso_y;
-	/* double			right_scaled_iso_x;
-	double			right_scaled_iso_y;
-	double			bottom_scaled_iso_x;
-	double			bottom_scaled_iso_y; */
 	struct s_map	*map;
 }	t_dot;
 
-//	MAP STRUCTURE to store map general data
+//	MAP STRUCTURE to store map general data. Also links with
+//	the matrix, mlx, and img data structs.
 typedef struct s_map
 {
 	int				map_rows;
@@ -57,6 +54,9 @@ typedef struct s_map
 	int				offset_x;
 	int				offset_y;
 	double			current_angle;
+	double			center_x;
+	double			center_y;
+	int				total_dots;
 	t_dot			**matrix;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
@@ -95,7 +95,6 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
 
 //	PREPROCESS_MATRIX.C
 void	preprocess_matrix(t_dot **matrix, t_map *map);
-//void	set_neighbors_scaled_coords(t_dot **matrix, t_map *map);
 void	scale_iso_coords(t_dot *dot, t_map *map);
 void	calculate_iso_coords(t_dot *dot);
 
@@ -117,6 +116,11 @@ void	draw_step(t_bresenham *b);
 
 //	MLX_KEY_HOOK.C
 void	handle_key(mlx_key_data_t keydata, void *param);
+
+//	ROTATE_MATRIX.C
+void	manage_rotation(t_map *map, double angle);
+void	rotate_matrix(t_map *map, double angle);
+void	rotate_dot(t_dot *dot, double angle, double center_x, double center_y);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);
