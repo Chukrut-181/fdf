@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:56:32 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/22 15:51:15 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:00:14 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	calculate_map_center(t_map *map)
 		{
 			map->center_x += map->matrix[i][j].iso_x;
 			map->center_y += map->matrix[i][j].iso_y;
+			map->center_z += map->matrix[i][j].z;
 			j++;
 		}
 		i++;

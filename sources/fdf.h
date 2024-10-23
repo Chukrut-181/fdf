@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/23 13:20:00 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:58:33 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,13 @@ typedef struct s_map
 	int				initial_scale;
 	double			offset_x;
 	double			offset_y;
-	double			current_angle;
 	double			center_x;
 	double			center_y;
+	double			center_z;
+	double			rotation_x;
+	double			rotation_y;
+	double			rotation_z;
+	double			current_angle;
 	int				total_dots;
 	t_dot			**matrix;
 	mlx_image_t		*img;
