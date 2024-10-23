@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/23 12:15:10 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/23 13:20:00 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define ISO_ANGLE 0.523599
 # define ROTATE_ANGLE 0.087266463
+# define PITCH_ANGLE 0.087266463
 
 # include "../libft/libft.h"
 # include <fcntl.h>
