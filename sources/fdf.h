@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/22 16:26:10 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:00:55 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef struct s_map
 	double			max_x;
 	double			min_y;
 	double			max_y;
-	int				scale;
+	double			scale;
+	double			initial_scale;
 	int				offset_x;
 	int				offset_y;
 	double			current_angle;
