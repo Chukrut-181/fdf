@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:58:10 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/23 12:06:16 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:16:06 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ void zoom_matrix(t_map *map, double zoom_factor)
 {
 	int i;
 	int j;
+	
  	if (zoom_factor < 1 && map->scale < map->initial_scale)
-	{
 		return ;
-	}
 	map->scale *= zoom_factor;
 	i = 0;
 	while (i < map->map_rows)
