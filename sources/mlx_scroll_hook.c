@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:58:10 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/23 12:16:06 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:26:54 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@ void	scroll_zoom(double xdelta, double ydelta, void *param)
 
 	map = (t_map *)param;
 	(void)xdelta;
-
 	if (ydelta > 0)
-	{
 		zoom_matrix(map, 1.1);
-	}
 	else if (ydelta < 0)
-	{
 		zoom_matrix(map, 0.9);
-	}
-
 	mlx_delete_image(map->mlx, map->img);
 	map->img = mlx_new_image(map->mlx, 1600, 1200);
 	render_matrix(map->img, map->matrix, map);
@@ -36,12 +30,12 @@ void	scroll_zoom(double xdelta, double ydelta, void *param)
 	mlx_image_to_window(map->mlx, map->img, 0, 0);
 }
 
-void zoom_matrix(t_map *map, double zoom_factor)
+void	zoom_matrix(t_map *map, double zoom_factor)
 {
-	int i;
-	int j;
-	
- 	if (zoom_factor < 1 && map->scale < map->initial_scale)
+	int	i;
+	int	j;
+
+	if (zoom_factor < 1 && map->scale < map->initial_scale)
 		return ;
 	map->scale *= zoom_factor;
 	i = 0;
