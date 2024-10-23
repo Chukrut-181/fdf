@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:39:12 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/21 16:37:41 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:03:51 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	preprocess_matrix(t_dot **matrix, t_map *map)
 		i++;
 	}
 	scale_and_offset(matrix, map, 1600, 1200);
+	map->initial_scale = map->scale;
 	i = 0;
 	while (i < map->map_rows)
 	{
@@ -41,14 +42,14 @@ void	preprocess_matrix(t_dot **matrix, t_map *map)
 	}
 }
 
-void	scale_iso_coords(t_dot *dot, t_map *map)
-{
-	dot->scaled_iso_x = dot->iso_x * map->scale + map->offset_x;
-	dot->scaled_iso_y = dot->iso_y * map->scale + map->offset_y;
-}
-
 void	calculate_iso_coords(t_dot *dot)
 {
 	dot->iso_x = (dot->x - dot->y) * cos(ISO_ANGLE);
 	dot->iso_y = (dot->x + dot->y) * sin(ISO_ANGLE) - dot->z;
+}
+
+void	scale_iso_coords(t_dot *dot, t_map *map)
+{
+	dot->scaled_iso_x = (dot->iso_x * map->scale) + map->offset_x;
+	dot->scaled_iso_y = (dot->iso_y * map->scale) + map->offset_y;
 }
