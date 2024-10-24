@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/23 10:07:20 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:45:07 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 			y2d = matrix[i][j].scaled_iso_y;
 			if (!is_out_of_bounds(&matrix[i][j]))
 			{
-				mlx_put_pixel(img, (uint32_t)x2d, (uint32_t)y2d, 0xFFFFFFFF);
+				mlx_put_pixel(img, (uint32_t)x2d, (uint32_t)y2d, matrix[i][j].color32);
 			}
 			j++;
 		}

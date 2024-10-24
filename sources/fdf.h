@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/24 10:08:53 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:08:02 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,26 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../MLX42/include/MLX42/MLX42_Int.h"
 
+typedef enum e_projection
+{
+	ISOMETRIC,
+	PERSPECTIVE
+}	t_projection;
+
 //  DOT STRUCTURE to store all dot coordinates, raw and processed.
 typedef struct s_dot
 {
 	int				x;
 	int				y;
 	int				z;
+	uint32_t		color32;
 	double			iso_x;
 	double			iso_y;
 	double			scaled_iso_x;
 	double			scaled_iso_y;
 	struct s_map	*map;
 }	t_dot;
+
 
 //	MAP STRUCTURE to store map general data. Also links with
 //	the matrix, mlx, and img data structs.
@@ -65,7 +73,7 @@ typedef struct s_map
 	t_dot			**matrix;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
-	t_projection	projection_mode;
+	t_projection	*projection_mode;
 }	t_map;
 
 // LINE STRUCTURE to implement Bresenham's algorythm
@@ -81,12 +89,6 @@ typedef struct s_bresenham
 	int				step_y;
 	int				error;
 }	t_bresenham;
-
-typedef enum e_projection
-{
-	ISOMETRIC,
-	PERSPECTIVE
-}	t_projection;
 
 //	MAIN.C
 int		main(int argc, char **argv);
@@ -126,6 +128,9 @@ void	init_bresenham(t_bresenham *b, t_dot origin, t_dot target);
 void	determine_step_direction(int *step, int a, int b);
 void	extract_coordinates(int *x, int *y, t_dot dot);
 void	draw_step(t_bresenham *b);
+
+//	COLORS.C
+void	assign_color_based_on_z(t_dot *dot);
 
 //	MLX_KEY_HOOK.C
 void	handle_key(mlx_key_data_t keydata, void *param);
