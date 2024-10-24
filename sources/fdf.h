@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/23 16:06:42 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:08:53 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_map
 	t_dot			**matrix;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
+	t_projection	projection_mode;
 }	t_map;
 
 // LINE STRUCTURE to implement Bresenham's algorythm
@@ -80,6 +81,12 @@ typedef struct s_bresenham
 	int				step_y;
 	int				error;
 }	t_bresenham;
+
+typedef enum e_projection
+{
+	ISOMETRIC,
+	PERSPECTIVE
+}	t_projection;
 
 //	MAIN.C
 int		main(int argc, char **argv);
