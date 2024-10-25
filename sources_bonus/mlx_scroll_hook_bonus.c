@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_scroll_hook.c                                  :+:      :+:    :+:   */
+/*   mlx_scroll_hook_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:58:10 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 10:45:17 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:39:35 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
 void	scroll_zoom(double xdelta, double ydelta, void *param)

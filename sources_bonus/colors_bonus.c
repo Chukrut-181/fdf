@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   colors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:07:32 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 10:47:48 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:39:17 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
 void	assign_color_based_on_z(t_dot *dot)

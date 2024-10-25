@@ -6,12 +6,13 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2024/10/24 12:20:50 by igchurru         ###   ########.fr        #
+#    Updated: 2024/10/25 11:37:59 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variable representing the name of the final executable file.
 NAME = fdf
+NAME_BONUS = fdf_bonus
 
 # Compiler to be used (C compiler).
 CC = cc
@@ -35,11 +36,18 @@ SOURCE_FILES = main error fil_de_fer parse_map preprocess_matrix\
 render_matrix render_lines bresenham get_next_line get_next_line_utils\
 mlx_key_hook rotate_matrix mlx_scroll_hook colors
 
+# List of bonus files (without extensions).
+BONUS_FILES = main_bonus error_bonus fil_de_fer_bonus parse_map_bonus preprocess_matrix_bonus\
+render_matrix_bonus render_lines_bonus bresenham_bonus get_next_line_bonus get_next_line_utils_bonus\
+mlx_key_hook_bonus rotate_matrix_bonus mlx_scroll_hook_bonus colors_bonus
+
 # Directory containing the source files.
 SOURCES_DIR = sources/
+SOURCES_DIR_BONUS = sources_bonus/
 
 # Directory to store the object files.
 OBJECTS_DIR = objects/
+OBJECTS_DIR_BONUS = objects_bonus/
 
 # Generate a list of source files with full path and .c extension.
 # $(addprefix $(SOURCES_DIR), $(addsuffix .c, $(SOURCE_FILES)))
@@ -50,6 +58,9 @@ SOURCES = $(addprefix $(SOURCES_DIR), $(addsuffix .c, $(SOURCE_FILES)))
 # $(addprefix $(OBJECTS_DIR), $(addsuffix .o, $(SOURCE_FILES)))
 # Expands to: objects/main.o (again, an example)
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(addsuffix .o, $(SOURCE_FILES)))
+
+SOURCES_BONUS = $(addprefix $(SOURCES_DIR_BONUS), $(addsuffix .c, $(BONUS_FILES)))
+OBJECTS_BONUS = $(addprefix $(OBJECTS_DIR_BONUS), $(addsuffix .o, $(BONUS_FILES)))
 
 # Libraries needed for linking, which includes:
 # - MLX42 library, built from the MLX42/build/ directory.
@@ -84,6 +95,18 @@ $(NAME):$(OBJECTS)
 # "-c" compiles without linking, producing object files.
 $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
 	mkdir -p $(OBJECTS_DIR)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+bonus: libft mlx42 $(NAME_BONUS)
+	@echo "$(GREEN)-> fdf_bonus compilation OK$(RESET)"
+
+# Compile the bonus executable.
+$(NAME_BONUS): $(OBJECTS_BONUS)
+	$(CC) $(OBJECTS_BONUS) $(LIBS) -o $(NAME_BONUS)
+
+# Compile object files for bonus program.
+$(OBJECTS_DIR_BONUS)%.o: $(SOURCES_DIR_BONUS)%.c
+	mkdir -p $(OBJECTS_DIR_BONUS)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 sanitize:
@@ -124,4 +147,4 @@ fclean: clean
 re: fclean all
 
 # Specify targets that aren't files, to avoid conflicts.
-.PHONY: all clean fclean libft mlx42 re
+.PHONY: all clean fclean libft mlx42 re bonus
