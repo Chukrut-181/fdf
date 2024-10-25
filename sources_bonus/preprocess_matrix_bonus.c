@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:39:12 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 12:35:13 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:07:58 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	calculate_perspective_coords(t_dot *dot)
 	{
 		dot->iso_x = (dot->x * FOCAL_LENGTH) / (dot->z + FOCAL_LENGTH);
 		dot->iso_y = (dot->y * FOCAL_LENGTH) / (dot->z + FOCAL_LENGTH);
-    }
+	}
 	else
 	{
 		dot->iso_x = dot->x;

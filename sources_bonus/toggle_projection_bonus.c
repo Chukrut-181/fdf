@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:42:27 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 13:00:46 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:08:32 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	toggle_projection(t_map *map)
 
 void	apply_projection(t_map *map)
 {
-	t_dot **matrix;
-	
+	t_dot	**matrix;
+
 	matrix = map->matrix;
 	if (map->projection_mode == ISOMETRIC)
 	{
