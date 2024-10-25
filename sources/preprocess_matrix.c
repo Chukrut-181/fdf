@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:39:12 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/24 12:50:18 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:44:22 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	calculate_iso_coords(t_dot *dot)
 {
 	dot->iso_x = (dot->x - dot->y) * cos(ISO_ANGLE);
 	dot->iso_y = (dot->x + dot->y) * sin(ISO_ANGLE) - dot->z;
-	assign_color_based_on_z(dot);
 }
 
 void	scale_iso_coords(t_dot *dot, t_map *map)

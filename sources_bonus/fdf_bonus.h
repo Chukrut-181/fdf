@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/24 13:08:02 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:02:06 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
@@ -46,7 +46,6 @@ typedef struct s_dot
 	double			scaled_iso_y;
 	struct s_map	*map;
 }	t_dot;
-
 
 //	MAP STRUCTURE to store map general data. Also links with
 //	the matrix, mlx, and img data structs.
@@ -117,7 +116,7 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
 void	scale_and_offset(t_dot **matrix, t_map *map, int w_width, int w_height);
 void	preprocess_matrix(t_dot **matrix, t_map *map);
 void	calculate_iso_coords(t_dot *dot);
-int		is_out_of_bounds(t_dot *dot);
+int		bounds(t_dot *dot);
 
 //	RENDER_LINES.C
 void	render_lines(mlx_image_t *img, t_dot **matrix, t_map *map);

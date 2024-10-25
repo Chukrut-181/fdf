@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:07:32 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:39:17 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:57:03 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	assign_color_based_on_z(t_dot *dot)
 		dot->color32 = 0xFF006400;
 	else if (-2 <= dot->z && dot->z < 0)
 		dot->color32 = 0xFF008000;
-	else if (dot->z == 0)
-		dot->color32 = 0xFF90EE90;
-	else if (0 < dot->z && dot->z < 2)
+	else if (0 <= dot->z && dot->z < 2)
 		dot->color32 = 0xFF90EE90;
 	else if (2 <= dot->z && dot->z < 4)
 		dot->color32 = 0xFF00FFFF;

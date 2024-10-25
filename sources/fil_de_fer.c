@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:08 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/23 09:54:22 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:47:23 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	fil_de_fer(t_dot **matrix, t_map *map)
 	render_lines(img, matrix, map);
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_key_hook(mlx, handle_key, map);
-	mlx_scroll_hook(mlx, scroll_zoom, map);
 	mlx_loop(mlx);
 	free_matrix(matrix, map->map_rows);
 	mlx_delete_image(mlx, img);

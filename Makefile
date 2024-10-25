@@ -6,7 +6,7 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2024/10/25 11:37:59 by igchurru         ###   ########.fr        #
+#    Updated: 2024/10/25 11:51:27 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ MLX42_FLAGS = -Iinclude -ldl -lglfw -pthread -lm
 # List of source files (without extensions).
 SOURCE_FILES = main error fil_de_fer parse_map preprocess_matrix\
 render_matrix render_lines bresenham get_next_line get_next_line_utils\
-mlx_key_hook rotate_matrix mlx_scroll_hook colors
+mlx_key_hook
 
 # List of bonus files (without extensions).
 BONUS_FILES = main_bonus error_bonus fil_de_fer_bonus parse_map_bonus preprocess_matrix_bonus\
@@ -130,8 +130,9 @@ libft:
 # Display a message indicating successful clean-up of object files.
 clean:
 	rm -rf $(OBJECTS_DIR)
+	rm -rf $(OBJECTS_DIR_BONUS)
 	make clean -C ./libft
-	@echo "$(YELLOW)-> All .o files from fdf removed$(RESET)"
+	@echo "$(YELLOW)-> All .o files removed$(RESET)"
 
 # Full clean target, which also removes the final executable.
 # Execute clean, then remove the final executable.
@@ -139,8 +140,9 @@ clean:
 # Display a message indicating successful removal of the executable.
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME_BONUS)
 	rm -f /libft/libft.a
-	@echo "$(RED)-> fdf removed$(RESET)"
+	@echo "$(RED)-> fdf and fdf_bonus removed$(RESET)"
 
 # "re" target to rebuild everything from scratch.
 # It first runs "fclean" to remove all compiled files and then runs "all" to compile everything again.

@@ -6,14 +6,14 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:39:45 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:03:11 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-int	is_out_of_bounds(t_dot *dot)
+int	bounds(t_dot *dot)
 {
 	if (dot->scaled_iso_x < 0 || dot->scaled_iso_x >= 1600
 		|| dot->scaled_iso_y < 0 || dot->scaled_iso_y >= 1200)
@@ -87,9 +87,10 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 		{
 			x2d = matrix[i][j].scaled_iso_x;
 			y2d = matrix[i][j].scaled_iso_y;
-			if (!is_out_of_bounds(&matrix[i][j]))
+			if (!bounds(&matrix[i][j]))
 			{
-				mlx_put_pixel(img, (uint32_t)x2d, (uint32_t)y2d, matrix[i][j].color32);
+				mlx_put_pixel(img, (uint32_t)x2d, (uint32_t)y2d,
+					matrix[i][j].color32);
 			}
 			j++;
 		}
