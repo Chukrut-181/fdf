@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:05:37 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:39:32 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:50:11 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 		map->offset_x += 15;
 	manage_rotation(map, rotation_angle);
+	if (keydata.key == MLX_KEY_P && keydata.action == MLX_PRESS)
+		toggle_projection(map);
 }

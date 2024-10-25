@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 12:02:06 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:04:48 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define ISO_ANGLE 0.523599
 # define ROTATE_ANGLE 0.087266463
+# define FOCAL_LENGTH 500
 
 # include "../libft/libft.h"
 # include <fcntl.h>
@@ -72,7 +73,7 @@ typedef struct s_map
 	t_dot			**matrix;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
-	t_projection	*projection_mode;
+	t_projection	projection_mode;
 }	t_map;
 
 // LINE STRUCTURE to implement Bresenham's algorythm
@@ -110,6 +111,7 @@ void	populate_matrix(t_dot **matrix, char *route_to_map, t_map *map);
 void	preprocess_matrix(t_dot **matrix, t_map *map);
 void	scale_iso_coords(t_dot *dot, t_map *map);
 void	calculate_iso_coords(t_dot *dot);
+void	calculate_perspective_coords(t_dot *dot);
 
 //	RENDER_MATRIX.C
 void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map);
@@ -143,6 +145,12 @@ void	manage_rotation(t_map *map, double angle);
 void	rotate_matrix(t_map *map, double angle);
 void	rotate_dot(t_dot *dot, double angle, double center_x, double center_y);
 void	calculate_map_center(t_map *map);
+
+//	TOGGLE_PROJECTION.C
+void	toggle_projection(t_map *map);
+void	apply_projection(t_map *map);
+void	preprocess_persp_matrix(t_dot **matrix, t_map *map);
+void	redraw_scene(t_map *map);
 
 //  GET_NEXT_LINE.C
 char	*get_next_line(int fd);

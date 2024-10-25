@@ -6,7 +6,7 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2024/10/25 11:51:27 by igchurru         ###   ########.fr        #
+#    Updated: 2024/10/25 13:02:34 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ mlx_key_hook
 # List of bonus files (without extensions).
 BONUS_FILES = main_bonus error_bonus fil_de_fer_bonus parse_map_bonus preprocess_matrix_bonus\
 render_matrix_bonus render_lines_bonus bresenham_bonus get_next_line_bonus get_next_line_utils_bonus\
-mlx_key_hook_bonus rotate_matrix_bonus mlx_scroll_hook_bonus colors_bonus
+mlx_key_hook_bonus rotate_matrix_bonus mlx_scroll_hook_bonus colors_bonus toggle_projection_bonus
 
 # Directory containing the source files.
 SOURCES_DIR = sources/

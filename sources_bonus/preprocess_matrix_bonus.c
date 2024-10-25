@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:39:12 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:39:40 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:35:13 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ void	calculate_iso_coords(t_dot *dot)
 {
 	dot->iso_x = (dot->x - dot->y) * cos(ISO_ANGLE);
 	dot->iso_y = (dot->x + dot->y) * sin(ISO_ANGLE) - dot->z;
+	assign_color_based_on_z(dot);
+}
+
+void	calculate_perspective_coords(t_dot *dot)
+{
+	if (dot->z + FOCAL_LENGTH != 0)
+	{
+		dot->iso_x = (dot->x * FOCAL_LENGTH) / (dot->z + FOCAL_LENGTH);
+		dot->iso_y = (dot->y * FOCAL_LENGTH) / (dot->z + FOCAL_LENGTH);
+    }
+	else
+	{
+		dot->iso_x = dot->x;
+		dot->iso_y = dot->y;
+	}
 	assign_color_based_on_z(dot);
 }
 
