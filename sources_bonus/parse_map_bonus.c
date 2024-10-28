@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:32:54 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 13:24:55 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:27:44 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_dot	**parse_map(char *argv1, t_map *map)
 	int		fd;
 	char	*route_to_map;
 	t_dot	**matrix;
-
+	
 	route_to_map = ft_strjoin("./maps/", argv1);
 	fd = open(route_to_map, O_RDONLY);
 	if (fd < 0)
