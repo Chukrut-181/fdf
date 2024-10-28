@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:32:54 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:39:37 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:24:55 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ t_dot	**parse_map(char *argv1, t_map *map)
 	map->center_x = 0;
 	map->center_y = 0;
 	map->matrix = matrix;
+	map->projection_mode = ISOMETRIC;
 	return (matrix);
 }
