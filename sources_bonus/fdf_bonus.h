@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 13:04:48 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:18:29 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <stdio.h>
 # include <math.h>
 # include "../MLX42/include/MLX42/MLX42.h"
-# include "../MLX42/include/MLX42/MLX42_Int.h"
 
 typedef enum e_projection
 {

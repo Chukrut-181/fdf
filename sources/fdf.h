@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:22:58 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:54:45 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:18:35 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include <stdio.h>
 # include <math.h>
 # include "../MLX42/include/MLX42/MLX42.h"
-# include "../MLX42/include/MLX42/MLX42_Int.h"
 
 //  DOT STRUCTURE to store all dot coordinates, raw and processed.
 typedef struct s_dot
