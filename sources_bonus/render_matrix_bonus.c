@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 12:03:11 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:47:30 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 		j = 0;
 		while (j < map->map_cols)
 		{
+			assign_color_based_on_z(&matrix[i][j]);
 			x2d = matrix[i][j].scaled_iso_x;
 			y2d = matrix[i][j].scaled_iso_y;
 			if (!bounds(&matrix[i][j]))
