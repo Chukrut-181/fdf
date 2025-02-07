@@ -6,7 +6,7 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2025/02/07 10:40:50 by igchurru         ###   ########.fr        #
+#    Updated: 2025/02/07 11:00:30 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(NAME_BONUS)
-	rm -f /libft/libft.a
+	make fclean -C ./libft
 	@echo "$(RED)-> fdf and fdf_bonus removed$(RESET)"
 
 re: fclean all
