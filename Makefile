@@ -6,18 +6,16 @@
 #    By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 10:25:48 by igchurru          #+#    #+#              #
-#    Updated: 2025/02/07 11:00:30 by igchurru         ###   ########.fr        #
+#    Updated: 2025/02/07 11:25:35 by igchurru         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Variable representing the name of the final executable file.
 NAME = fdf
 NAME_BONUS = fdf_bonus
 
-# Compiler to be used (C compiler).
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 MLX42_FLAGS = -Iinclude -ldl -lglfw -pthread -lm
 
@@ -49,50 +47,58 @@ RED = \033[1;31m
 YELLOW = \033[1;33m
 RESET = \033[0m
 
-all: libft mlx42 $(NAME)
+all: update_submodules libft mlx42 $(NAME)
 	@echo "$(GREEN)-> fdf compilation OK$(RESET)"
 
+update_submodules:
+	@git submodule update --init --recursive
+	@echo "$(YELLOW)-> Submodules updated$(RESET)"
+
 $(NAME):$(OBJECTS)
-	$(CC) $(OBJECTS) $(LIBS) -o $(NAME)
+	@$(CC) $(OBJECTS) $(LIBS) -o $(NAME)
 
 $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
-	mkdir -p $(OBJECTS_DIR)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@mkdir -p $(OBJECTS_DIR)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
-bonus: libft mlx42 $(NAME_BONUS)
+bonus: update_submodules libft mlx42 $(NAME_BONUS)
 	@echo "$(GREEN)-> fdf_bonus compilation OK$(RESET)"
 
 $(NAME_BONUS): $(OBJECTS_BONUS)
-	$(CC) $(OBJECTS_BONUS) $(LIBS) -o $(NAME_BONUS)
+	@$(CC) $(OBJECTS_BONUS) $(LIBS) -o $(NAME_BONUS)
 
 $(OBJECTS_DIR_BONUS)%.o: $(SOURCES_DIR_BONUS)%.c
-	mkdir -p $(OBJECTS_DIR_BONUS)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@mkdir -p $(OBJECTS_DIR_BONUS)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 sanitize:
 	@echo "$(YELLOW)Adding Sanitize to CFLAGS$(RESET)"
-	$(eval CFLAGS=-fsanitize=address -g3)
+	@$(eval CFLAGS=-fsanitize=address -g3)
 
 sani: fclean sanitize all 
 
 mlx42:
+	if [ ! -d "MLX42/build" ]; then \
+		mkdir -p MLX42/build && cd MLX42/build && cmake ..; \
+	fi
 	make -C MLX42/build
 
 libft:
 	make -C ./libft
 
 clean:
-	rm -rf $(OBJECTS_DIR)
-	rm -rf $(OBJECTS_DIR_BONUS)
-	make clean -C ./libft
+	@rm -rf $(OBJECTS_DIR)
+	@rm -rf $(OBJECTS_DIR_BONUS)
+	@make clean -C ./libft
+	@rm -rf MLX42/build
 	@echo "$(YELLOW)-> All .o files removed$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f $(NAME_BONUS)
-	make fclean -C ./libft
+	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
+	@make fclean -C ./libft
 	@echo "$(RED)-> fdf and fdf_bonus removed$(RESET)"
 
 re: fclean all
 
-.PHONY: all clean fclean libft mlx42 re bonus
+.PHONY: all clean fclean libft mlx42 re bonus update_submodules sani sanitize
