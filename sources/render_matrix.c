@@ -6,13 +6,18 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:03:31 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:53:41 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:36:18 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
+/*	is_out_of_bounds - Checks if a point is outside the rendering window bounds.
+@dot: Pointer to a point struct containing scaled isometric coordinates.
+
+This function returns 1 if the point's scaled coordinates are outside the 
+defined window dimensions (1600x1200), and 0 otherwise. */
 int	is_out_of_bounds(t_dot *dot)
 {
 	if (dot->scaled_iso_x < 0 || dot->scaled_iso_x >= 1600
@@ -23,6 +28,14 @@ int	is_out_of_bounds(t_dot *dot)
 	return (0);
 }
 
+/*	calculate_iso_bounds - Computes the min and max isometric bounds
+for the matrix.
+@matrix: 2D array of points representing the map structure.
+@map: Struct containing bounds information for isometric coordinates.
+
+This function iterates through the matrix of points to determine the minimum 
+and maximum isometric x and y coordinates, updating the corresponding fields
+in the map structure for later scaling and rendering. */
 void	calculate_iso_bounds(t_dot **matrix, t_map *map)
 {
 	int	i;
@@ -52,6 +65,17 @@ void	calculate_iso_bounds(t_dot **matrix, t_map *map)
 	}
 }
 
+/*	scale_and_offset - Calculates the scaling factor and offset
+for rendering the matrix.
+@matrix: 2D array of points representing the map structure.
+@map: Struct containing scale and offset parameters for rendering.
+@w_width: Width of the rendering window.
+@w_height: Height of the rendering window.
+
+This function computes the bounds of the isometric coordinates
+and determines the appropriate scaling to fit the map within
+the specified window dimensions. It also calculates the necessary
+offsets to center the map in the window. */
 void	scale_and_offset(t_dot **matrix, t_map *map, int w_width, int w_height)
 {
 	double	iso_width;
@@ -72,6 +96,14 @@ void	scale_and_offset(t_dot **matrix, t_map *map, int w_width, int w_height)
 		/ 2 - (map->min_y * map->scale);
 }
 
+/*	render_matrix - Renders the isometric points onto the image.
+@img: Pointer to the image struct where pixels are drawn.
+@matrix: 2D array of points representing the map structure.
+@map: Struct containing rendering parameters.
+
+This function iterates through the matrix of points, checks if
+each point is within the bounds of the rendering window,
+and draws the corresponding pixel on the image if it is valid. */
 void	render_matrix(mlx_image_t *img, t_dot **matrix, t_map *map)
 {
 	int		i;

@@ -6,13 +6,20 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:07:32 by igchurru          #+#    #+#             */
-/*   Updated: 2024/10/25 11:57:03 by igchurru         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:55:49 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
+/*	assign_color_based_on_z - Assigns a color to a t_dot based on its
+z-coordinate.
+@dot: Pointer to the t_dot struct for which the color is being assigned.
+
+This function sets the color32 property of the dot based on its z value. 
+Different ranges of z correspond to specific colors, allowing for a 
+visual representation of height in the rendered output. */
 void	assign_color_based_on_z(t_dot *dot)
 {
 	if (dot->z <= -10)
